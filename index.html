@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- linc CSS -->
+    <link rel="stylesheet" media="screen" href="bootstrapcss/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="bootstrapcss/style.css">
+
+
+
+    <!-- connect app files -->
+    <script src="app.js"></script>
+    <script src="js/controller/AuthService.js"></script>
+    <script src="js/controller/LoginController.js"></script>
+    <script src="js/controller/AppController.js"></script>
+    <script src="js/controller/ContentController.js"></script>
+    <script src="js/controller/NavController.js"></script>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="modal-body ">
+    <h1 class="text-center">Find out your horoscope</h1>
+
+    <div class="text-right">Welcome, {{ loginUser.email + ' (' + (loginUser.zodiac | capitalize ) + ')' }}
+        <button id="btn_logout" name="btn_logout" class="btn btn-primary btn-xs">LogOut</button>
+    </div>
+</header>
+
+
+<!-- Body-->
+<main class="container">
+    <!-- Login Menu -->
+
+    <!--Main Content-->
+    <div class="container-fluid ng-cloak" >
+        <div class="row">
+
+        </div>
+    </div>
+</main>
+<footer></footer>
+</body>
+</html>
