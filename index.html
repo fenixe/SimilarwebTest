@@ -1,48 +1,76 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Similarweb.com Front End Developer Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- linc CSS -->
-    <link rel="stylesheet" media="screen" href="bootstrapcss/bootstrap.min.css">
-    <link rel="stylesheet" media="screen" href="bootstrapcss/style.css">
+    <link rel="stylesheet" media="screen" href="css/style.css">
 
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 
-    <!-- connect app files -->
-    <script src="app.js"></script>
-    <script src="js/controller/AuthService.js"></script>
-    <script src="js/controller/LoginController.js"></script>
-    <script src="js/controller/AppController.js"></script>
-    <script src="js/controller/ContentController.js"></script>
-    <script src="js/controller/NavController.js"></script>
+
+    <script id="contactTemplate" type="text/template">
+
+    </script>
+
+    <script src="js/library/jquery.min.js"></script>
+    <script src="js/library/json2.js"></script>
+    <script src="js/library/underscore-min.js"></script>
+    <script src="js/library/backbone-min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var iframe = $('#ourframe', parent.document.body);
+
+            if ($(document.body).width() <= 320) {
+                iframe.height(200);
+            } else {
+                iframe.height(0);
+            }
+        });
+    </script>
 </head>
-
 <body>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <main class="col-xs-12 col-sm-6 col-md-6 content">
+            <div class="header-panel">
+                <form class="left-inner-addon">
+                    <i class="icon-search"></i>
+                    <input type="text" class="form-control" placeholder="Search..."/>
+                </form>
+            </div>
 
-<!-- Header -->
-<header class="modal-body ">
-    <h1 class="text-center">Find out your horoscope</h1>
 
-    <div class="text-right">Welcome, {{ loginUser.email + ' (' + (loginUser.zodiac | capitalize ) + ')' }}
-        <button id="btn_logout" name="btn_logout" class="btn btn-primary btn-xs">LogOut</button>
+            <div class="domain-content">
+                <div class="domain-name">
+                    <img src="https://d6rd5g4tnbhqj.cloudfront.net/image?url=ebay.com&t=2&s=0&h=10201409454775654588"
+                         alt=""/>
+                    ebay.com
+                </div>
+                <div class="domain-tittle"> Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</div>
+                <div class="category-name">#shopping</div>
+
+                <div class="rankings-name">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li> <span class="pull-right rank">31</span>Global Rank</li>
+                        <li> <span class="pull-right rank">9</span>Country Rank</li>
+                        <li> <span class="pull-right rank">3</span>Category Rank</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </main>
+        <!-- <iframe id="ourframe" class="col-xs-12 col-sm-6 col-md-6 frame" seamless frameborder="0"
+                 src="http://backbonejs.ru/docs/todos.html"></iframe>-->
     </div>
-</header>
 
+</div>
 
-<!-- Body-->
-<main class="container">
-    <!-- Login Menu -->
-
-    <!--Main Content-->
-    <div class="container-fluid ng-cloak" >
-        <div class="row">
-
-        </div>
-    </div>
-</main>
-<footer></footer>
 </body>
 </html>
