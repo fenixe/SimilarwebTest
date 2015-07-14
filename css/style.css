@@ -21,10 +21,6 @@
     .rankings-name {
         margin-right: 20px;
     }
-
-   /* .frame {
-        height: 50%;
-    }*/
 }
 
 /* Extra Small Devices, Phones */
@@ -88,7 +84,7 @@ body {
     padding: inherit;
 }
 
-.header-panel {
+#searchPanel {
     height: 50px;
     background-color: #272D3A;
 }
@@ -218,6 +214,6 @@ body {
 
 .frame {
     padding: 0;
-    height: 100vh; /* высота секции равна высоте области просмотра */
+    height: 100vh;
 }
 

@@ -21,20 +21,22 @@
     <script src="js/library/json2.js"></script>
     <script src="js/library/underscore-min.js"></script>
     <script src="js/library/backbone-min.js"></script>
-
+    <script src="js/app.js"></script>
+    <script src="js/record.js"></script>
+    <script src="js/views/SearchBar.js"></script>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
-        <main class="col-xs-12  main-content">
 
-            <div class="header-panel">
-                <form class="left-inner-addon">
-                    <i class="icon-search"></i>
-                    <input type="text" class="form-control" placeholder="Search..."/>
-                </form>
+        <header id="searchPanel">
+            <div class="left-inner-addon">
+                <i class="icon-search"></i>
+                <input class="form-control" placeholder="Search..."/>
             </div>
+        </header>
 
+        <main class="col-xs-12  main-content">
             <div class="domain-content">
                 <div class="domain-name">
                     <img src="https://d6rd5g4tnbhqj.cloudfront.net/image?url=ebay.com&t=2&s=0&h=10201409454775654588"

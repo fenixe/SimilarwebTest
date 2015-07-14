@@ -2,7 +2,6 @@ var Domain = Backbone.Model.extend({
     defaults: {
         photo: "/img/placeholder.png"
     }
-
 });
 
 var RequestDomain = Backbone.View.extend({
