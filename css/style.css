@@ -1,87 +1,91 @@
 @import url('bootstrap.min.css');
 
-/*==========  Desktop First Method  ==========*/
-
-/* Large Devices, Wide Screens */
-@media only screen and (max-width: 1800px) {
-
-}
-
-/* Medium Devices, Desktops */
-@media only screen and (max-width: 992px) {
-    .frame {
-        height: 150%;
-    }
-}
-
-/* Small Devices, Tablets */
-@media only screen and (max-width: 768px) {
-    .frame {
-        height: 150%;
-    }
-
-}
-
-/* Extra Small Devices, Phones */
-@media only screen and (max-width: 480px) {
-
-    .frame {
-        height: 150%;
-    }
-
-}
-
-/* Custom, iPhone Retina */
-@media only screen and (max-width: 320px) {
-
-    .frame {
-        height: 150%;
-    }
-
-  }
-
-/*==========  Mobile First Method  ==========*/
-
 /* Custom, iPhone Retina */
 @media only screen and (min-width: 320px) {
+    .container-fluid, .main-content {
+        height: 100%; /* РІС‹СЃРѕС‚Р° СЃРµРєС†РёРё СЂР°РІРЅР° РІС‹СЃРѕС‚Рµ РѕР±Р»Р°СЃС‚Рё РїСЂРѕСЃРјРѕС‚СЂР° */
+    }
+    .similar-sites li button {
+        min-width: 265px;
+    }
 
+    .domain-content {
+        padding-left: 20px;
+    }
 
-    .frame {
-         height: 50%;
-     }
+    .domain-tittle {
+        text-align: center;
+        padding-right: 20px;
+    }
+
+    .rankings-name {
+        margin-right: 20px;
+    }
+
+   /* .frame {
+        height: 50%;
+    }*/
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width: 480px) {
+    .similar-sites li button {
+        min-width: 400px;
+    }
 
+    .domain-content {
+        padding-left: 35px;
+    }
 
+    .rankings-name {
+        margin-right: 40px;
+    }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width: 768px) {
+    .container-fluid, .main-content {
+        height: 100vh; /* РІС‹СЃРѕС‚Р° СЃРµРєС†РёРё СЂР°РІРЅР° РІС‹СЃРѕС‚Рµ РѕР±Р»Р°СЃС‚Рё РїСЂРѕСЃРјРѕС‚СЂР° */
+    }
+
+    .similar-sites li button {
+        min-width: 150px;
+    }
+
+    .domain-tittle {
+        text-align: left;
+        padding-right: 0;
+    }
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
-
+    .similar-sites li button {
+        min-width: 130px;
+    }
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width: 1200px) {
+    .similar-sites li button {
+        min-width: 160px;
+    }
 }
 
-body, html {
-    font-family: 'Open Sans', sans-serif;
+html {
     height: 100%;
 }
 
-.container-fluid, .content {
+body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100%;
     padding: 0;
-    border: 2px solid;
 }
 
-.content {
-    height: 100%
+
+.container-fluid, .main-content {
+    margin: 0 auto 0;
+    padding: inherit;
 }
 
 .header-panel {
@@ -118,10 +122,6 @@ body, html {
     border-radius: 20px;
 }
 
-.domain-content {
-    padding-left: 35px;
-}
-
 .domain-name, .domain-tittle, .domain-content,
 .similar-content {
     font-style: normal;
@@ -146,7 +146,6 @@ body, html {
 
 .rankings-name {
     margin-top: 30px;
-    margin-right: 40px;
     border: 1px solid #d4d3d5;
 }
 
@@ -177,60 +176,32 @@ body, html {
 
 .bottom-line {
     padding-top: 10px;
-    border-bottom: 1px solid #8B95A0;
+    border-bottom: 2px solid #8B95A0;
     width: 60px;
+}
+
+.similar-sites {
+    margin-left: -15px;
 }
 
 .similar-sites ul {
     list-style: none;
     padding: 0;
-
-
-   /* text-align: justify;
-    padding: 0;
-
-    /!* Обнуляем для родителя*!/
-    line-height: 0;
-    font-size: 1px; /!* 1px для Opera *!/
-
-    /!* Включаем в работу последнюю строку*!/
-    text-align-last: justify;*/
 }
 
 .similar-sites li {
-    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
+
 .similar-sites li button {
-    margin-top: 20px;
     font-weight: 600;
     text-align: left;
-    min-width: 180px;
-
+    height: 40px;
     padding: 6px;
     background-color: transparent;
-    border: 1px solid #8B95A0;
+    box-shadow: 0 0 3px;
 }
-
-/*.similar-sites ul:after {
-    width: 100%;
-    height: 0px;
-    visibility: hidden;
-    overflow: hidden;
-    content: '';
-    display: inline-block;
-}*/
-
-/*.similar-sites ul li {
-    display: inline-block;
-    text-align: left;
-
-    /!* Востанавливаем у потомков, кроме последнего*!/
-    line-height: normal;
-    font-size: 14px;
-
-    /!* Без него в Opera будет отступ под элементами *!/
-    vertical-align: top;
-}*/
 
 .similar-fav-icon {
     height: 15px;
@@ -240,8 +211,13 @@ body, html {
     background-size: cover;
 }
 
-.frame {
+#site-preview{
+    display: none;
     border: 1px solid black;
+}
+
+.frame {
     padding: 0;
+    height: 100vh; /* РІС‹СЃРѕС‚Р° СЃРµРєС†РёРё СЂР°РІРЅР° РІС‹СЃРѕС‚Рµ РѕР±Р»Р°СЃС‚Рё РїСЂРѕСЃРјРѕС‚СЂР° */
 }
 

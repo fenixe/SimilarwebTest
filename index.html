@@ -22,29 +22,18 @@
     <script src="js/library/underscore-min.js"></script>
     <script src="js/library/backbone-min.js"></script>
 
-    <script type="text/javascript">
-        $(function () {
-            var iframe = $('#ourframe', parent.document.body);
-
-            if ($(document.body).width() <= 320) {
-                iframe.height(200);
-            } else {
-                iframe.height(0);
-            }
-        });
-    </script>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
-        <main class="col-xs-12 col-sm-6 col-md-6 content">
+        <main class="col-xs-12  main-content">
+
             <div class="header-panel">
                 <form class="left-inner-addon">
                     <i class="icon-search"></i>
                     <input type="text" class="form-control" placeholder="Search..."/>
                 </form>
             </div>
-
 
             <div class="domain-content">
                 <div class="domain-name">
@@ -53,7 +42,7 @@
                     ebay.com
                 </div>
                 <div class="domain-tittle"> Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</div>
-                <div class="category-name">#shopping</div>
+                <div class="domain-tittle category-name">#shopping</div>
 
                 <div class="rankings-name">
                     <ul class="nav nav-pills nav-stacked">
@@ -70,37 +59,37 @@
 
                     <div class="similar-sites">
                         <ul>
-                            <li  class="col-xs-12 col-sm-4 col-md-4 ">
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4">
                                 <button class="btn btn-small">
                                     <span class="similar-fav-icon"></span>
                                     amazon.com
                                 </button>
                             </li>
-                            <li class="col-xs-12 col-sm-4 col-md-4 ">
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <button class="btn btn-small ">
                                     <span class="similar-fav-icon"></span>
                                     amazon.com
                                 </button>
                             </li>
-                            <li class="col-xs-12 col-sm-4 col-md-4 ">
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <button class="btn btn-small ">
                                     <span class="similar-fav-icon"></span>
                                     amazon.com
                                 </button>
                             </li>
-                            <li class="col-xs-12 col-sm-4 col-md-4 ">
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <button class="btn btn-small ">
                                     <span class="similar-fav-icon"></span>
                                     Кнопка
                                 </button>
                             </li>
-                            <li class="col-xs-12 col-sm-4 col-md-4 ">
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <button class="btn btn-small ">
                                     <span class="similar-fav-icon"></span>
                                     Кнопка
                                 </button>
                             </li>
-                            <li class="col-xs-12 col-sm-4 col-md-4 ">
+                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                                 <button class="btn btn-small ">
                                     <span class="similar-fav-icon"></span>
                                     Кнопка
@@ -110,10 +99,13 @@
                     </div>
                 </div>
             </div>
-
         </main>
-         <iframe id="ourframe" class="col-xs-12 col-sm-6 col-md-6 frame" seamless frameborder="0"
-                 src="http://backbonejs.org/index.php"></iframe>
+
+        <div id="site-preview">
+            <iframe class="col-xs-12 col-sm-6 col-md-6 col-lg-6 frame" seamless frameborder="0"
+                    src="http://backbonejs.org/index.php"></iframe>
+        </div>
+
     </div>
 
 </div>
