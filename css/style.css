@@ -5,11 +5,12 @@
     .container-fluid, .main-content {
         height: 100%; /* высота секции равна высоте области просмотра */
     }
+
     .similar-sites li button {
         min-width: 265px;
     }
 
-    .domain-content {
+    .domain-atr, .similar-content {
         padding-left: 20px;
     }
 
@@ -29,7 +30,7 @@
         min-width: 400px;
     }
 
-    .domain-content {
+    .domain-atr, .similar-content {
         padding-left: 35px;
     }
 
@@ -78,47 +79,53 @@ body {
     padding: 0;
 }
 
-
 .container-fluid, .main-content {
     margin: 0 auto 0;
     padding: inherit;
 }
 
-#searchPanel {
-    height: 50px;
+.main-content {
+    padding-top: 55px;
+}
+
+#search-panel {
+    height: 65px;
     background-color: #272D3A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
 }
 
 .left-inner-addon {
-    width: 220px;
-    padding-top: 11px;
-    margin-left: 30px;
-}
-
-.left-inner-addon .form-control {
-    height: 28px;
-}
-
-.left-inner-addon input {
-    padding-left: 30px;
+    padding-top: 16px;
+    margin-left: 15px;
 }
 
 .left-inner-addon i {
-    width: 13px;
-    height: 13px;
-    margin-top: 7px;
-    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    margin: 8px;
     position: absolute;
     pointer-events: none;
     background: url("img/search.png") no-repeat;
     background-size: cover;
 }
 
-.form-control {
+.field-search {
     border-radius: 20px;
+    height: 32px;
+    padding-left: 30px;
+    width: 290px;
+    border: 0;
 }
 
-.domain-name, .domain-tittle, .domain-content,
+.field-search:focus {
+    outline: none;
+}
+
+.domain-name, .domain-tittle, .domain-atr,
 .similar-content {
     font-style: normal;
     font-weight: 400;
@@ -199,15 +206,12 @@ body {
     box-shadow: 0 0 3px;
 }
 
-.similar-fav-icon {
+.similar-icon {
     height: 15px;
     width: 15px;
-    background: url(https://d6rd5g4tnbhqj.cloudfront.net/image?url=amazon.com&t=2&s=0&h=542754912626254351) no-repeat;
-    padding: 0 12px 3px 10px;
-    background-size: cover;
 }
 
-#site-preview{
+#site-preview {
     display: none;
     border: 1px solid black;
 }

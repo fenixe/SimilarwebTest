@@ -8,109 +8,80 @@
 
     <!-- linc CSS -->
     <link rel="stylesheet" media="screen" href="css/style.css">
-
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 
-
-    <script id="contactTemplate" type="text/template">
-
-    </script>
-
     <script src="js/library/jquery.min.js"></script>
-    <script src="js/library/json2.js"></script>
     <script src="js/library/underscore-min.js"></script>
     <script src="js/library/backbone-min.js"></script>
+
     <script src="js/app.js"></script>
-    <script src="js/record.js"></script>
-    <script src="js/views/SearchBar.js"></script>
+    <script src="js/models/DomainModel.js"></script>
+
+    <script src="js/views/SearchPanel.js"></script>
+    <script src="js/views/DomainContent.js"></script>
+    <script src="js/views/SimilarSitesContent.js"></script>
+
 </head>
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
 
-        <header id="searchPanel">
+        <header id="search-panel">
             <div class="left-inner-addon">
                 <i class="icon-search"></i>
-                <input class="form-control" placeholder="Search..."/>
+                <input class="field-search" placeholder="Search..."/>
             </div>
         </header>
 
         <main class="col-xs-12  main-content">
-            <div class="domain-content">
-                <div class="domain-name">
-                    <img src="https://d6rd5g4tnbhqj.cloudfront.net/image?url=ebay.com&t=2&s=0&h=10201409454775654588"
-                         alt=""/>
-                    ebay.com
-                </div>
-                <div class="domain-tittle"> Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay</div>
-                <div class="domain-tittle category-name">#shopping</div>
 
-                <div class="rankings-name">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><span class="pull-right rank">31</span>Global Rank</li>
-                        <li><span class="pull-right rank">9</span>Country Rank</li>
-                        <li><span class="pull-right rank">3</span>Category Rank</li>
-                    </ul>
-                </div>
+            <div id="domain-content"></div>
 
-                <div class="similar-content">
-                    <span class="similar-title"> Similar Sites</span>
+            <div id="similar-sites-btn" class="similar-content">
+                <span class="similar-title">Similar Sites</span>
 
-                    <div class="bottom-line"></div>
-
-                    <div class="similar-sites">
-                        <ul>
-                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4">
-                                <button class="btn btn-small">
-                                    <span class="similar-fav-icon"></span>
-                                    amazon.com
-                                </button>
-                            </li>
-                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                <button class="btn btn-small ">
-                                    <span class="similar-fav-icon"></span>
-                                    amazon.com
-                                </button>
-                            </li>
-                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                <button class="btn btn-small ">
-                                    <span class="similar-fav-icon"></span>
-                                    amazon.com
-                                </button>
-                            </li>
-                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                <button class="btn btn-small ">
-                                    <span class="similar-fav-icon"></span>
-                                    Кнопка
-                                </button>
-                            </li>
-                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                <button class="btn btn-small ">
-                                    <span class="similar-fav-icon"></span>
-                                    Кнопка
-                                </button>
-                            </li>
-                            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                <button class="btn btn-small ">
-                                    <span class="similar-fav-icon"></span>
-                                    Кнопка
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="bottom-line"></div>
+                <div class="similar-sites">
+                    <ul></ul>
                 </div>
             </div>
+
         </main>
 
         <div id="site-preview">
-            <iframe class="col-xs-12 col-sm-6 col-md-6 col-lg-6 frame" seamless frameborder="0"
-                    src="http://backbonejs.org/index.php"></iframe>
+            <!-- <iframe class="col-xs-12 col-sm-6 col-md-6 col-lg-6 frame" seamless frameborder="0"
+                     src="http://backbonejs.org/index.php"></iframe>-->
         </div>
-
     </div>
-
 </div>
+
+<!-- index.html -->
+<script type="text/template" id="domain-content-tpl">
+    <div class="domain-atr">
+        <div class="domain-name">
+            <img src="<%= FavIcon %>" alt=""/>
+            <%= Domain %>
+        </div>
+        <div class="domain-tittle"><%= Title %></div>
+        <div class="domain-tittle category-name">#<%= Category %></div>
+
+        <div class="rankings-name">
+            <ul class="nav nav-pills nav-stacked">
+                <li><span class="pull-right rank"><%= GlobalRank %></span>Global Rank</li>
+                <li><span class="pull-right rank"><%= CountryRank %></span>Country Rank</li>
+                <li><span class="pull-right rank"><%= CategoryRank %></span>Category Rank</li>
+            </ul>
+        </div>
+    </div>
+</script>
+
+<!-- index.html -->
+<script type="text/template" id="similar-btn-tpl">
+    <button class="btn btn-small">
+        <img class="similar-icon" src="<%= FavIcon %>" alt=""/>
+        <%= Url %>
+    </button>
+</script>
 
 </body>
 </html>

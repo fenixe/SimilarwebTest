@@ -1,6 +1,6 @@
-(function ($) {
+$(function () {
     var app = window.app || {};
-    console.log(app);
+
     app = (function () {
 
         var api = {
@@ -30,9 +30,6 @@
 
     })();
 
-
-
-
     //define product model
     var Contact = Backbone.Model.extend({
         defaults: {
@@ -53,7 +50,6 @@
 
         render: function () {
             var tmpl = _.template(this.template);
-
             $(this.el).html(tmpl(this.model.toJSON()));
             return this;
         }
@@ -64,16 +60,15 @@
         el: $("#contacts"),
 
         initialize: function () {
-            this.collection = new Contact(contacts);
+            //this.collection = new Contact(contacts);
             this.render();
         },
 
         render: function () {
             var that = this;
-            console.log(this.collection);
-            _.each(this.collection.models, function (item) {
+            /*_.each(this.collection.models, function (item) {
                 that.renderContact(item);
-            }, this);
+            }, this);*/
         },
 
         renderContact: function (item) {
@@ -87,4 +82,4 @@
     //create instance of master view
     var directory = new DirectoryView();
 
-})(jQuery);
+});
