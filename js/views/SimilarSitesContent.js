@@ -1,17 +1,16 @@
 $(function () {
     var app = window.app || {};
 
-
     var SimilarSitesButton = Backbone.View.extend({
         tagName: "li",
         className: "col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4",
         template: _.template($("#similar-btn-tpl").html()),
 
         events: {
-            'click button': 'searchDomain'
+            'click button': 'linkToDomain'
         },
 
-        searchDomain: function () {
+        linkToDomain: function () {
             app.domainModel.send(this.model['Url']);
         },
 
@@ -28,7 +27,7 @@ $(function () {
 
         initialize: function () {
             this.$el.hide();
-            this.model.on('change', this.setSimilarSites, this);
+            this.listenTo(this.model, 'change:SimilarSites', this.setSimilarSites, this);
         },
 
         setSimilarSites: function (model, data) {

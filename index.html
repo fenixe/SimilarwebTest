@@ -20,6 +20,7 @@
     <script src="js/views/SearchPanel.js"></script>
     <script src="js/views/DomainContent.js"></script>
     <script src="js/views/SimilarSitesContent.js"></script>
+    <script src="js/views/DomainIframe.js"></script>
 
 </head>
 <body>
@@ -33,9 +34,10 @@
             </div>
         </header>
 
-        <main class="col-xs-12  main-content">
-
-            <div id="domain-content"></div>
+        <main id="main-content">
+            <div id="domain-content">
+                <span class="first-info">Enter your domain in the search bar</span>
+            </div>
 
             <div id="similar-sites-btn" class="similar-content">
                 <span class="similar-title">Similar Sites</span>
@@ -48,9 +50,10 @@
 
         </main>
 
-        <div id="site-preview">
-            <!-- <iframe class="col-xs-12 col-sm-6 col-md-6 col-lg-6 frame" seamless frameborder="0"
-                     src="http://backbonejs.org/index.php"></iframe>-->
+        <div id="domain-iframe">
+             <!--<iframe class="col-xs-12 col-sm-6 col-md-6 col-lg-6 frame" seamless frameborder="0"
+                     src="http://backbonejs.org/index.php">
+             </iframe>-->
         </div>
     </div>
 </div>

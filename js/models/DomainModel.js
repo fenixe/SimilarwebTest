@@ -19,6 +19,9 @@ $(function () {
                 },
                 success: function (model, data) {
                     model.set({"Domain": domain});
+                },
+                error: function (model, data) {
+                    //app.get
                 }
             });
         }

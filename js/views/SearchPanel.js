@@ -18,10 +18,10 @@ $(function () {
             var ENTER_KEY = 13;
             var searchText = this.$input.val().trim();
 
+            this.model.send("ebay.com"/*searchText*/);  //check auctions.overstock.com
             if (evt.which !== ENTER_KEY || !searchText) {
                 return;
             }
-            this.model.send(searchText);
         }
     });
 

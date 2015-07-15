@@ -8,7 +8,7 @@ $(function () {
         model: app.domainModel,
 
         initialize: function () {
-            this.model.on('change:Domain', this.setDomainInfo, this);
+            this.listenTo(this.model, 'change:Domain', this.setDomainInfo, this);
         },
 
         setDomainInfo: function () {
