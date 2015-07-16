@@ -21,23 +21,25 @@
     <script src="js/views/DomainContent.js"></script>
     <script src="js/views/SimilarSitesContent.js"></script>
     <script src="js/views/DomainIframe.js"></script>
+    <script src="js/views/ErrorMessage.js"></script>
+
 
 </head>
 <body>
 <div class="container-fluid">
     <div class="row-fluid">
-
-        <header id="search-panel">
-            <div class="left-inner-addon">
-                <i class="icon-search"></i>
-                <input class="field-search" placeholder="Search..."/>
-            </div>
-        </header>
-
         <main id="main-content">
-            <div id="domain-content">
-                <span class="first-info">Enter your domain in the search bar</span>
+
+            <div id="search-panel">
+                <div class="left-inner-addon">
+                    <i class="icon-search"></i>
+                    <input class="field-search form-control" type="text" placeholder="Search..."/>
+                </div>
             </div>
+
+            <div id="first-info">Enter your domain in the search bar</div>
+
+            <div id="domain-content"></div>
 
             <div id="similar-sites-btn" class="similar-content">
                 <span class="similar-title">Similar Sites</span>
@@ -50,11 +52,8 @@
 
         </main>
 
-        <div id="domain-iframe">
-             <!--<iframe class="col-xs-12 col-sm-6 col-md-6 col-lg-6 frame" seamless frameborder="0"
-                     src="http://backbonejs.org/index.php">
-             </iframe>-->
-        </div>
+        <div id="domain-iframe"></div>
+
     </div>
 </div>
 
@@ -66,7 +65,7 @@
             <%= Domain %>
         </div>
         <div class="domain-tittle"><%= Title %></div>
-        <div class="domain-tittle category-name">#<%= Category %></div>
+        <div class="domain-tittle category-name">#<%= Category.toLowerCase() %></div>
 
         <div class="rankings-name">
             <ul class="nav nav-pills nav-stacked">
@@ -81,7 +80,7 @@
 <!-- index.html -->
 <script type="text/template" id="similar-btn-tpl">
     <button class="btn btn-small">
-        <img class="similar-icon" src="<%= FavIcon %>" alt=""/>
+        <img class="similar-icon " src="<%= FavIcon %>" alt=""/>
         <%= Url %>
     </button>
 </script>

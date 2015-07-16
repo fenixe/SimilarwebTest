@@ -24,7 +24,7 @@ $(function () {
 
             $(this.el).append(e);
 
-            console.log(e[0]);
+            /*console.log(e[0]);
             //console.log(e[0].contentWindow.document);
             $(e).load(function () {
 
@@ -35,7 +35,7 @@ $(function () {
                 } else if (without_selector_document != true) {
                     $(selector_document).html($(x).html());
                 }
-            });
+            });*/
 
             //$(this.el).html(this.contentTpl(this.model.toJSON()));
         }

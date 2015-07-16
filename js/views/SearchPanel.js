@@ -15,12 +15,20 @@ $(function () {
         },
 
         searchDomain: function (evt) {
-            var ENTER_KEY = 13;
-            var searchText = this.$input.val().trim();
+            var ENTER_KEY = 13,
+                searchDomain = this.$input.val().trim(),
+                pattern = /^[a-z0-9-\.]+\.[a-z]{2,4}/;
 
-            this.model.send("ebay.com"/*searchText*/);  //check auctions.overstock.com
-            if (evt.which !== ENTER_KEY || !searchText) {
+            if (evt.which !== ENTER_KEY || !searchDomain) {
                 return;
+            }
+
+            if (pattern.test(searchDomain)) {
+                $(this.el).removeClass('has-error');
+                this.model.send(searchDomain); //check auctions.overstock.com
+            } else {
+                $(this.el).addClass('has-error');
+                app.showError(this.el, "You entered incorrect domain", 2500);
             }
         }
     });

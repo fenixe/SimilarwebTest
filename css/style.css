@@ -111,7 +111,7 @@ body {
     padding: 0;
 }
 
-.first-info {
+#first-info {
     display: block;
     margin: 70px auto;
     padding: 0 15px;
@@ -122,10 +122,6 @@ body {
     color: #8B95A0;
 }
 
-.row-fluid {
-    padding-top: 65px;
-}
-
 #main-content, #domain-iiframe, .container-fluid {
     margin: 0 auto 0;
     padding: 0;
@@ -134,11 +130,17 @@ body {
 #search-panel {
     height: 65px;
     background-color: #272D3A;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 100%;
+}
+
+.alert {
+    max-width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    position: relative;
+    z-index: 999;
 }
 
 .left-inner-addon {
@@ -164,8 +166,9 @@ body {
     border: 0;
 }
 
-.field-search:focus {
+.has-error input:focus {
     outline: none;
+    background: rgba(255, 235, 239, 1);
 }
 
 .domain-name, .domain-tittle, .domain-atr,
@@ -255,7 +258,8 @@ body {
     width: 15px;
 }
 
-#domain-iiframe {
+#domain-iframe {
+    padding: 0;
     border: 1px solid black;
 }
 

@@ -37,7 +37,7 @@ $(function () {
             if (me.$el.is(':hidden')) {
                 this.$el.show();
             } else {
-                this.$el.find('ul').html('');
+                this.$el.find('ul').empty();
             }
 
             _.each(similarSites, function (item) {
