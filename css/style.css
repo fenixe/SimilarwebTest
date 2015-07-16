@@ -214,6 +214,7 @@ body {
 }
 
 .similar-content {
+    display: none;
     margin-top: 30px;
     margin-right: 40px;
 }

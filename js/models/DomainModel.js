@@ -1,11 +1,22 @@
-var app = window.app || {};
-$(function () {
-
+define(['jquery',
+    'backbone',
+    'app',
+    'views/ErrorMessage'
+], function ($, Backbone, app, showError) {
     var DomainModel = Backbone.Model.extend({
         url: '//api.similarweb.com/site/{domain}/rankoverview',
         initialize: function () {
             this.userkey = '8124610b6f24fb784f676b65b1f0ac19';
         },
+
+        reset: function (attrs, options) {
+            for (var key in this.attributes) {
+                if (key in attrs) continue;
+                attrs[key] = undefined;
+            }
+            return this.set(attrs, options);
+        },
+
         send: function (domain) {  // method for get domain info
             var regExp = "{domain}";
 
@@ -21,25 +32,29 @@ $(function () {
                     model.set({"Domain": domain});
                 },
                 error: function (model, data) {            // if "error" clean all content
-                    var domCont = app.domainContent.el,
-                        simCont = app.similarContent.el,
-                        searchCont = app.searchPanel.el,
-                        domIframe = app.domainIframe.el;
+
+                    var view = app.views,
+                        domCont = view.domainContent.el,
+                        simCont = view.similarContent.el,
+                        searchCont = view.searchPanel.el,
+                        domIframe = view.domainIframe.el;
 
                     $("#main-content").removeClass();
-                    model.set([], {silent: true});
+
+                    model.reset({}, {silent: true});
 
                     $(domCont).empty();
-                    $(simCont).empty();
+                    $(simCont).find('ul').empty();
+                    $(simCont).hide();
                     $(domIframe).empty();
 
                     $('#first-info').show();
-                    app.showError(searchCont, "An error occurred when data loading", 3500);
+                    showError(searchCont, "An error occurred when data loading", 3500);
                 }
             });
         }
     });
 
-    app.domainModel = new DomainModel;
-
+    //return class of domain content model
+    return app.models.domainModel = new DomainModel();
 });

@@ -1,5 +1,4 @@
-$(function () {
-    var app = window.app || {};
+define(['jquery', 'backbone', 'models/DomainModel'], function ($, Backbone, domainModel) {
 
     var SimilarSitesButton = Backbone.View.extend({
         tagName: "li",
@@ -11,7 +10,7 @@ $(function () {
         },
 
         linkToDomain: function () {
-            app.domainModel.send(this.model['Url']);
+            domainModel.send(this.model['Url']);
         },
 
         render: function () {
@@ -23,10 +22,9 @@ $(function () {
     //define domain content view
     var SimilarSitesContent = Backbone.View.extend({
         el: $('#similar-sites-btn'),
-        model: app.domainModel,
+        model: domainModel,
 
         initialize: function () {
-            this.$el.hide();
             this.listenTo(this.model, 'change:SimilarSites', this.setSimilarSites, this);
         },
 
@@ -53,7 +51,7 @@ $(function () {
         }
     });
 
-    //create instance of domain content view
-    app.similarContent = new SimilarSitesContent();
+    //return class of domain content view
+    return new SimilarSitesContent();
 });
 

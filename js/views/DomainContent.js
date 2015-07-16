@@ -1,11 +1,14 @@
-$(function () {
-    var app = window.app || {};
+define([
+    'jquery',
+    'backbone',
+    'models/DomainModel'
+], function ($, Backbone, domainModel) {
 
     //define domain content view
     var DomainContent = Backbone.View.extend({
         el: $('#domain-content'),
         contentTpl: _.template($('#domain-content-tpl').html()),
-        model: app.domainModel,
+        model: domainModel,
 
         initialize: function () {
             this.listenTo(this.model, 'change:Domain', this.setDomainInfo, this);
@@ -17,7 +20,7 @@ $(function () {
         }
     });
 
-    //create instance of domain content view
-    app.domainContent = new DomainContent();
+    //return class of domain content view
+    return new DomainContent();
 });
 

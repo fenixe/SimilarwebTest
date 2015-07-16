@@ -8,21 +8,17 @@
 
     <!-- linc CSS -->
     <link rel="stylesheet" media="screen" href="css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 
-    <script src="js/library/jquery.min.js"></script>
-    <script src="js/library/underscore-min.js"></script>
-    <script src="js/library/backbone-min.js"></script>
+    <!-- Require JS Config -->
+    <script src="js/require.config.js" ></script>
+    <script src="js/library/require.js" ></script>
+    <!-- End Config -->
 
-    <script src="js/app.js"></script>
-    <script src="js/models/DomainModel.js"></script>
-
-    <script src="js/views/SearchPanel.js"></script>
-    <script src="js/views/DomainContent.js"></script>
-    <script src="js/views/SimilarSitesContent.js"></script>
-    <script src="js/views/DomainIframe.js"></script>
-    <script src="js/views/ErrorMessage.js"></script>
-
+    <script>
+        // add entry point here
+        require(['init']);
+    </script>
 
 </head>
 <body>

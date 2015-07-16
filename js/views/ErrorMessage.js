@@ -1,7 +1,6 @@
-$(function () {
-    var app = window.app || {};
+define(['jquery'], function ($) {
 
-    app.showError = function (el, message, timeout) {
+    var showError = function (el, message, timeout) {
         var errorMessage = $('#error');
 
         if (errorMessage.length) {
@@ -17,4 +16,6 @@ $(function () {
             $(this).remove();
         });
     };
+
+    return showError;
 });

@@ -1,85 +1,35 @@
-$(function () {
-    var app = window.app || {};
+define([
+    'jquery',
+    'backbone'
+], function ($, Backbone) {
 
-    app = (function () {
+    var Application = (function () {
 
-        var api = {
+        var app = {
             views: {},
             models: {},
-            collections: {},
-            content: null,
-            router: null,
-            todos: null,
+
             init: function () {
-                this.content = $("#content");
+                require([
+                    'views/SearchPanel',
+                    'views/DomainContent',
+                    'views/SimilarSitesContent',
+                    'views/DomainIframe',
+                    'views/ErrorMessage'
+                ], this.initView);
             },
-            changeContent: function (el) {
-                this.content.empty().append(el);
-                return this;
-            },
-            title: function (str) {
-                $("h1").text(str);
-                return this;
+
+            initView: function (searchPanel, domainContent, similarContent, domainIframe, showError) {
+                app.views.searchPanel = searchPanel;
+                app.views.domainContent = domainContent;
+                app.views.similarContent = similarContent;
+                app.views.domainIframe = domainIframe;
+                app.views.showError = showError;
             }
         };
-        var ViewsFactory = {};
-        var Router = Backbone.Router.extend({});
-        api.router = new Router();
 
-        return api;
-
-    })();
-
-    //define product model
-    var Contact = Backbone.Model.extend({
-        defaults: {
-            photo: "img/placeholder.png"
-        }
+        return app;
     });
 
-    //define directory collection
-    var Directory = Backbone.Collection.extend({
-        model: Contact
-    });
-
-    //define individual contact view
-    var ContactView = Backbone.View.extend({
-        tagName: "article",
-        className: "contact-container",
-        template: $("#contactTemplate").html(),
-
-        render: function () {
-            var tmpl = _.template(this.template);
-            $(this.el).html(tmpl(this.model.toJSON()));
-            return this;
-        }
-    });
-
-    //define master view
-    var DirectoryView = Backbone.View.extend({
-        el: $("#contacts"),
-
-        initialize: function () {
-            //this.collection = new Contact(contacts);
-            this.render();
-        },
-
-        render: function () {
-            var that = this;
-            /*_.each(this.collection.models, function (item) {
-                that.renderContact(item);
-            }, this);*/
-        },
-
-        renderContact: function (item) {
-            var contactView = new ContactView({
-                model: item
-            });
-            this.$el.append(contactView.render().el);
-        }
-    });
-
-    //create instance of master view
-    var directory = new DirectoryView();
-
+    return Application();
 });
