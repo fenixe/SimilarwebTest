@@ -1,10 +1,12 @@
-define(['jquery',
-    'backbone',
+define([
     'app',
     'views/ErrorMessage'
-], function ($, Backbone, app, showError) {
+], function (app, showError) {
+
+    //define class of domain content model
     var DomainModel = Backbone.Model.extend({
         url: '//api.similarweb.com/site/{domain}/rankoverview',
+
         initialize: function () {
             this.userkey = '8124610b6f24fb784f676b65b1f0ac19';
         },
@@ -28,20 +30,18 @@ define(['jquery',
                     userkey: this.userkey,
                     format: 'json'
                 },
-                success: function (model, data) {       // set value Domain in model for call model event
+                success: function (model, data) {           // set value Domain in model for call model event
                     model.set({"Domain": domain});
                 },
-                error: function (model, data) {            // if "error" clean all content
-
+                error: function (model, data) {             // if "error" clean all content
                     var view = app.views,
                         domCont = view.domainContent.el,
                         simCont = view.similarContent.el,
-                        searchCont = view.searchPanel.el,
                         domIframe = view.domainIframe.el;
 
                     $("#main-content").removeClass();
 
-                    model.reset({}, {silent: true});
+                    model.reset({}, {silent: true});        // reset models data by defaults
 
                     $(domCont).empty();
                     $(simCont).find('ul').empty();
@@ -49,12 +49,12 @@ define(['jquery',
                     $(domIframe).empty();
 
                     $('#first-info').show();
-                    showError(searchCont, "An error occurred when data loading", 3500);
+                    showError("An error occurred when data loading", 3500);
                 }
             });
         }
     });
 
     //return class of domain content model
-    return app.models.domainModel = new DomainModel();
+    return new DomainModel();
 });

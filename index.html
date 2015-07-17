@@ -6,14 +6,14 @@
     <title>Similarweb.com Front End Developer Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- linc CSS -->
+    <!-- linc CSS and fonts -->
     <link rel="stylesheet" media="screen" href="css/style.css">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 
-    <!-- Require JS Config -->
-    <script src="js/require.config.js" ></script>
-    <script src="js/library/require.js" ></script>
-    <!-- End Config -->
+    <!-- RequireJS config -->
+    <script src="js/require.config.js"></script>
+    <script src="js/library/require.js"></script>
+    <!-- end config -->
 
     <script>
         // add entry point here
@@ -37,10 +37,11 @@
 
             <div id="domain-content"></div>
 
-            <div id="similar-sites-btn" class="similar-content">
+            <div id="similar-sites" class="similar-sites-content hide-content">
                 <span class="similar-title">Similar Sites</span>
 
                 <div class="bottom-line"></div>
+
                 <div class="similar-sites">
                     <ul></ul>
                 </div>
@@ -48,7 +49,7 @@
 
         </main>
 
-        <div id="domain-iframe"></div>
+        <div id="domain-iframe" class="hide-content"></div>
 
     </div>
 </div>

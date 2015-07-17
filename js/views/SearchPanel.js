@@ -1,9 +1,7 @@
 define([
-    'jquery',
-    'backbone',
     'models/DomainModel',
     'views/ErrorMessage'
-], function ($, Backbone, domainModel, showError) {
+], function (domainModel, showError) {
 
     //define search panel view
     var SearchPanel = Backbone.View.extend({
@@ -20,27 +18,25 @@ define([
 
         searchDomain: function (evt) {
             var ENTER_KEY = 13,
+                searchPanel = this.$el,
                 searchDomain = this.$input.val().trim(),
-                pattern = /^[a-z0-9-\.]+\.[a-z]{2,4}/;
-
-            this.model.send( 'ebay.com'/*searchDomain*/); //check auctions.overstock.com
+                domainPattern = /^[a-z0-9-\.]+\.[a-z]{2,4}/;
 
             if (evt.which !== ENTER_KEY || !searchDomain) {
                 return;
             }
 
-
-
-            if (pattern.test(searchDomain)) {
-                $(this.el).removeClass('has-error');
+            if (domainPattern.test(searchDomain)) {
+                searchPanel.removeClass('has-error');
+                this.model.send( searchDomain);
             } else {
-                $(this.el).addClass('has-error');
-                showError(this.el, "You entered incorrect domain", 2500);
+                searchPanel.addClass('has-error');
+                showError("You entered incorrect domain", 2500);
             }
         }
     });
 
-    //return class of search panel view
+    //return object of search panel view
     return new SearchPanel();
 });
 

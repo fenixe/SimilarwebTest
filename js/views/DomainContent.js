@@ -1,8 +1,6 @@
 define([
-    'jquery',
-    'backbone',
     'models/DomainModel'
-], function ($, Backbone, domainModel) {
+], function (domainModel) {
 
     //define domain content view
     var DomainContent = Backbone.View.extend({
@@ -20,7 +18,7 @@ define([
         }
     });
 
-    //return class of domain content view
+    //return object of domain content view
     return new DomainContent();
 });
 

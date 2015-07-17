@@ -1,9 +1,12 @@
+/**
+ * initiation RequireJs params
+ */
+
 require = {
     baseUrl: 'js/',
     paths: {
         jquery: '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min',
-        jqueryXDomain: 'library/jquery.xdomainajax',
-        jqueryYQL: 'library/jquery.query-yql.min',
+        jqueryIframe: 'library/jquery.iframe',
         underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.0/backbone-min'
     },
@@ -12,11 +15,7 @@ require = {
             exports: '$'
         },
 
-        'jqueryXDomain': {
-            deps: ['jquery']
-        },
-
-        'jqueryYQL': {
+        'jqueryIframe': {
             deps: ['jquery']
         },
 
@@ -29,5 +28,5 @@ require = {
             exports: 'Backbone'
         }
     },
-    deps: ['backbone']
+    deps: ['backbone', 'jqueryIframe']
 };

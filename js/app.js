@@ -1,8 +1,8 @@
 define([
-    'jquery',
     'backbone'
-], function ($, Backbone) {
+], function (Backbone) {
 
+    // define application
     var Application = (function () {
 
         var app = {
@@ -17,6 +17,14 @@ define([
                     'views/DomainIframe',
                     'views/ErrorMessage'
                 ], this.initView);
+                require([
+                    'models/DomainModel'
+                ], this.initModel);
+            },
+
+            initModel: function (model) {
+                app.models.domainModel = model;
+
             },
 
             initView: function (searchPanel, domainContent, similarContent, domainIframe, showError) {

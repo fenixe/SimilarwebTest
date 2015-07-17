@@ -1,5 +1,8 @@
-define(['jquery', 'backbone', 'models/DomainModel'], function ($, Backbone, domainModel) {
+define([
+    'models/DomainModel'
+], function (domainModel) {
 
+    // define similar sites button view
     var SimilarSitesButton = Backbone.View.extend({
         tagName: "li",
         className: "col-xs-12 col-sm-6 col-md-4 col-lg-4 col-lg-4",
@@ -21,7 +24,7 @@ define(['jquery', 'backbone', 'models/DomainModel'], function ($, Backbone, doma
 
     //define domain content view
     var SimilarSitesContent = Backbone.View.extend({
-        el: $('#similar-sites-btn'),
+        el: $('#similar-sites'),
         model: domainModel,
 
         initialize: function () {
@@ -29,29 +32,32 @@ define(['jquery', 'backbone', 'models/DomainModel'], function ($, Backbone, doma
         },
 
         setSimilarSites: function (model, data) {
-            var me = this;
-            var similarSites = model.get('SimilarSites');
+            var me = this,
+                buttons = [],
+                similarSitesContent = me.$el,
+                similarSitesData = model.get('SimilarSites');
 
-            if (me.$el.is(':hidden')) {
-                this.$el.show();
-            } else {
-                this.$el.find('ul').empty();
+            if (similarSitesContent.is(':hidden')) {
+                similarSitesContent.show();
             }
 
-            _.each(similarSites, function (item) {
-                me.renderSiteButton(item);
+            _.each(similarSitesData, function (item) {
+                buttons.push(me.renderSiteButton(item));
             }, this);
+
+            similarSitesContent.find('ul').empty().append(buttons);
         },
 
         renderSiteButton: function (item) {
             var sitesButton = new SimilarSitesButton({
                 model: item
             });
-            $(this.$el).find('ul').append(sitesButton.render().el);
+
+            return sitesButton.render().el;
         }
     });
 
-    //return class of domain content view
+    //return object of domain content view
     return new SimilarSitesContent();
 });
 

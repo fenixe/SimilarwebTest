@@ -1,16 +1,24 @@
-define(['jquery'], function ($) {
+define(['app'], function (app) {
 
-    var showError = function (el, message, timeout) {
-        var errorMessage = $('#error');
+    /**
+     * function for show error notification
+     * @param message
+     * @param timeout
+     */
+    var showError = function (message, timeout) {
+        var errorMessage = $('#error'),
+            searchPanel = app.views.searchPanel.$el;
 
         if (errorMessage.length) {
             errorMessage.remove();
         }
 
+        console.log(searchPanel);
+
         errorMessage = $('<div id="error" class="alert alert-danger" role="alert"></div>');
 
         errorMessage.html(message);
-        $(el).append(errorMessage);
+        searchPanel.append(errorMessage);
 
         errorMessage.fadeOut(timeout, function () {
             $(this).remove();
