@@ -13,7 +13,7 @@ define([
         },
 
         setDomainInfo: function () {
-            $('#first-info').hide();   // hide first information block
+            $('#help-info').hide();   // hide first information block
             $(this.el).html(this.contentTpl(this.model.toJSON()));
         }
     });

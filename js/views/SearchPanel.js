@@ -22,13 +22,14 @@ define([
                 searchDomain = this.$input.val().trim(),
                 domainPattern = /^[a-z0-9-\.]+\.[a-z]{2,4}/;
 
-            if (evt.which !== ENTER_KEY || !searchDomain) {
+            searchPanel.removeClass('has-error');    // remove error class in every key press
+
+            if (evt.which !== ENTER_KEY) {
                 return;
             }
 
             if (domainPattern.test(searchDomain)) {
-                searchPanel.removeClass('has-error');
-                this.model.send( searchDomain);
+                this.model.send(searchDomain);
             } else {
                 searchPanel.addClass('has-error');
                 showError("You entered incorrect domain", 2500);

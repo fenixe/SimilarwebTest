@@ -13,8 +13,6 @@ define(['app'], function (app) {
             errorMessage.remove();
         }
 
-        console.log(searchPanel);
-
         errorMessage = $('<div id="error" class="alert alert-danger" role="alert"></div>');
 
         errorMessage.html(message);

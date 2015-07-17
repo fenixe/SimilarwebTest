@@ -6,9 +6,8 @@ define([
     //define class of domain content model
     var DomainModel = Backbone.Model.extend({
         url: '//api.similarweb.com/site/{domain}/rankoverview',
-
-        initialize: function () {
-            this.userkey = '8124610b6f24fb784f676b65b1f0ac19';
+        defaults: {
+            userkey: '8124610b6f24fb784f676b65b1f0ac19'
         },
 
         reset: function (attrs, options) {
@@ -27,13 +26,14 @@ define([
                 type: 'GET',
                 url: this.url.replace(regExp, domain),
                 data: {
-                    userkey: this.userkey,
+                    userkey: this.get('userkey'),
                     format: 'json'
                 },
-                success: function (model, data) {           // set value Domain in model for call model event
+                success: function (model, data) {
+                    // set value Domain in model for call model event
                     model.set({"Domain": domain});
                 },
-                error: function (model, data) {             // if "error" clean all content
+                error: function (model, data) {             // if "error" clean all content and show error message
                     var view = app.views,
                         domCont = view.domainContent.el,
                         simCont = view.similarContent.el,
@@ -41,14 +41,16 @@ define([
 
                     $("#main-content").removeClass();
 
-                    model.reset({}, {silent: true});        // reset models data by defaults
+                    model.reset(model.defaults, {silent: true});        // reset models data by defaults
 
+                    // clean all content
                     $(domCont).empty();
                     $(simCont).find('ul').empty();
                     $(simCont).hide();
-                    $(domIframe).empty();
+                    $(domIframe).empty().hide();
 
-                    $('#first-info').show();
+                    // show help info and error notification
+                    $('#help-info').show();
                     showError("An error occurred when data loading", 3500);
                 }
             });
