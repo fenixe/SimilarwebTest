@@ -24,12 +24,12 @@ define([
 
             searchPanel.removeClass('has-error');    // remove error class in every key press
 
+            this.model.send('ebay.com'/*searchDomain*/);
             if (evt.which !== ENTER_KEY) {
                 return;
             }
 
             if (domainPattern.test(searchDomain)) {
-                this.model.send(searchDomain);
             } else {
                 searchPanel.addClass('has-error');
                 showError("You entered incorrect domain", 2500);
