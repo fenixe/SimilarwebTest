@@ -3,12 +3,12 @@
  */
 
 require = {
-    baseUrl: 'js/',
+    baseUrl: './js/',
     paths: {
-        jquery: '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min',
-        jqueryIframe: 'library/jquery.iframe',
-        underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
-        backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.0/backbone-min'
+        jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min',
+        jqueryIframe: './library/jquery.iframe',
+        underscore: 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
+        backbone: 'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.0/backbone-min'
     },
     shim: {
         'jquery': {

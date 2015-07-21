@@ -32,7 +32,7 @@ define([
                 this.model.send(searchDomain);
             } else {
                 searchPanel.addClass('has-error');
-                showError("You entered incorrect domain", 2500);
+                showError("You entered incorrect domain", 5500);
             }
         }
     });

@@ -5,7 +5,7 @@ define([
 
     //define class of domain content model
     var DomainModel = Backbone.Model.extend({
-        url: '//api.similarweb.com/site/{domain}/rankoverview',
+        url: 'http://api.similarweb.com/site/{domain}/rankoverview',
         defaults: {
             userkey: '8124610b6f24fb784f676b65b1f0ac19'
         },

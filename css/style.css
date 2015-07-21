@@ -37,6 +37,16 @@
     #domain-iframe {
         height: 250px;
     }
+
+    #corrupted-info {
+        margin: 25px auto;
+        padding: 0;
+    }
+
+    .loader {
+        top: 30%;
+    }
+
 }
 
 /* Extra Small Devices, Phones */
@@ -85,6 +95,15 @@
     #domain-iframe {
         height: 100vmax;
     }
+
+    #corrupted-info {
+        margin: 150px auto;
+        padding: 0 90px;
+    }
+
+    .loader {
+        top: 20%;
+    }
 }
 
 /* Medium Devices, Desktops */
@@ -111,9 +130,6 @@ body {
 }
 
 #help-info, #corrupted-info {
-    display: block;
-    margin: 70px auto;
-    padding: 0 15px;
     text-align: center;
     font-style: normal;
     font-weight: 600;
@@ -121,12 +137,17 @@ body {
     color: #8B95A0;
 }
 
+#help-info {
+    display: block;
+    margin: 70px auto;
+    padding: 0 15px;
+}
+
 #corrupted-info {
     z-index: -1;
+    width: 100%;
     display: none;
     position: absolute;
-    margin: 150px auto;
-    padding: 0 90px;
 }
 
 #main-content, #domain-iframe, .container-fluid {
@@ -298,8 +319,7 @@ body {
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 20%;
-    left: 50%;
+    left: 44%;
     margin: auto;
     z-index: 9999;
     border: 6px solid #2871d5;

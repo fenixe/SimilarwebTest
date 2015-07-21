@@ -24,7 +24,6 @@ define([
 
             initModel: function (model) {
                 app.models.domainModel = model;
-
             },
 
             initView: function (searchPanel, domainContent, similarContent, domainIframe, showError) {

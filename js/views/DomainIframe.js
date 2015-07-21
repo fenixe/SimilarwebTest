@@ -25,8 +25,9 @@ define([
             }
 
             // create iframe for page preview
-            var frame = $('<iframe class="iframe" ' +
-                'scrolling="auto" frameborder="0" >' +
+            var frame = $('<iframe name="iframe" id="iframe" class="iframe" ' +
+                'scrolling="auto" sandbox="allow-scripts"  frameborder="0">' +
+                '<p id="corrupted-info">Your browser does not support iframes.</p>' +
                 '</iframe>');
 
             // create loader
@@ -35,29 +36,22 @@ define([
             //create a message, for show if the preview is not possible
             var corruptedMessage = $('<div id="corrupted-info">Sorry, preview forbidden by the rightholder</div>');
 
-            domainIframe.empty().append(message, loader, frame);
+
+            domainIframe.empty().append(corruptedMessage, loader, frame);
+
 
             frame.src(toLoad, function (duration) {
-                var content = 0;
-
-                loader.fadeOut();
-
-                try {
-                    content = frame.contents().length;
-                } catch (ex) {
-                }
-
-                if (!content) {
-                    corruptedMessage.show();
-                }
+                loader.remove();
+                corruptedMessage.show();
             }, {
                 timeout: function () {
-                    loader.fadeOut();
-                    showError("Problems on page load", 3000)
+                    loader.remove();
+                    showError("Problems on page load", 6000);
+                    corruptedMessage = $('<div id="corrupted-info">Problems on page load</div>').show();
+                    domainIframe.empty().append(corruptedMessage);
                 },
-                timeoutDuration: 5000
+                timeoutDuration: 20000
             });
-
         }
     });
 
