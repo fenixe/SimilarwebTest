@@ -15,8 +15,8 @@ define([
         setIframe: function (model, url) {
             var mainContent = $('#main-content'),
                 domainIframe = this.$el,
-                collClass = 'col-xs-12 col-sm-6 col-md-6 col-lg-6 ',
-                toLoad = 'http://' + url;
+                collClass = 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
+                toLoad = 'http://' + url + '/';
 
             if (domainIframe.is(':hidden')) {
                 mainContent.addClass(collClass);
@@ -26,68 +26,38 @@ define([
 
             // create iframe for page preview
             var frame = $('<iframe class="iframe" ' +
-                'scrolling="auto" seamless frameborder="0"  >' +
+                'scrolling="auto" frameborder="0" >' +
                 '</iframe>');
 
+            // create loader
             var loader = $('<div class="loader"></div>');
 
-            domainIframe.empty().append(frame, loader);
+            //create a message, for show if the preview is not possible
+            var corruptedMessage = $('<div id="corrupted-info">Sorry, preview forbidden by the rightholder</div>');
 
-            //var iframe = document.getElementsByTagName('iframe')[0];
+            domainIframe.empty().append(message, loader, frame);
 
-            var getData = function (data) {
-                if (data && data.query && data.query.results && data.query.results.resources && data.query.results.resources.content && data.query.results.resources.status == 200) loadHTML(data.query.results);
-                else if (data && data.error && data.error.description) loadHTML(data.error.description);
-                else loadHTML('Error: Cannot load ' + url);
-            };
-            var loadURL = function (src) {
-                console.log(url);
-                url = src;
-                var script = document.createElement('script');
-                //script.src = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20data.headers%20where%20url%3D%22' + encodeURIComponent(url) + '%22&format=json';
-                script.src = "";
-                //domainIframe.empty().append(script);
-                document.body.appendChild(script);
-            };
-            var loadHTML = function (html) {
-                //iframe.src = 'about:blank';
-                //iframe.contentWindow.document.open();
-                frame.html(html);
-                //iframe.contentWindow.document.close();
-            }
+            frame.src(toLoad, function (duration) {
+                var content = 0;
 
-            var el = '<!DOCTYPE html> ' +
-                '<html lang="en">' +
-                '<head>' +
-                '<meta charset="UTF-8">' +
-                '<meta http-equiv="X-UA-Compatible" content="IE=edge">' +
-                '</head>';
+                loader.fadeOut();
 
-            $.ajax({
-                url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Febay.com%2F'",
-                dataType: "xml",
-
-
-                success: function (data) {
-                    console.log($(data).find("body")[0].outerHTML);
-                    frame.squirt("a <em>little</em> content");
+                try {
+                    content = frame.contents().length;
+                } catch (ex) {
                 }
-            });
 
-            //loadURL(iframe.src);
-
-
-/*
-            frame.src("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'http%3A%2F%2Febay.com%2F'", function (duration) {
-                console.log(arguments);
-                $(loader).fadeOut();
+                if (!content) {
+                    corruptedMessage.show();
+                }
             }, {
                 timeout: function () {
-                    $(loader).detach();
+                    loader.fadeOut();
                     showError("Problems on page load", 3000)
                 },
-                timeoutDuration: 10000
-            });*/
+                timeoutDuration: 5000
+            });
+
         }
     });
 

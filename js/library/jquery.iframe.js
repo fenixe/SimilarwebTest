@@ -75,7 +75,7 @@
     var startTime = (new Date()).getTime();
     if (opts.timeout) {
       var timer = setTimeout(function() {
-        opts.frameactive=false; 
+        opts.frameactive=false;
         iframe.onload=null;
         if (opts.timeout) opts.timeout(iframe, opts.timeout);
       }, opts.timeoutDuration);

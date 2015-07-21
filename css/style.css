@@ -110,7 +110,7 @@ body {
     padding: 0;
 }
 
-#help-info {
+#help-info, #corrupted-info {
     display: block;
     margin: 70px auto;
     padding: 0 15px;
@@ -119,6 +119,14 @@ body {
     font-weight: 600;
     font-size: xx-large;
     color: #8B95A0;
+}
+
+#corrupted-info {
+    z-index: -1;
+    display: none;
+    position: absolute;
+    margin: 150px auto;
+    padding: 0 90px;
 }
 
 #main-content, #domain-iframe, .container-fluid {
